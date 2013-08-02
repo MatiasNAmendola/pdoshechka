@@ -22,17 +22,18 @@ class Pdo extends \PDO
     private $lastTypes;
     private $lastParamsCounter;
 
-    public function __construct(array $params = array(), $options = array())
+    public function __construct($params = array(), $username = null, $password = null, $options = array())
     {
-        if (!isset($params['username']) || !array_key_exists('password', $params)) {
-            throw new \InvalidArgumentException('Username and password are required!');
-        }
-        if (isset($params['driver']) && isset(self::$supportedDrivers[$params['driver']])) {
-            $dsn = call_user_func(array($this, self::$supportedDrivers[$params['driver']]), $params);
+        if (is_array($params)) {
+            if (isset($params['driver']) && isset(self::$supportedDrivers[$params['driver']])) {
+                $dsn = call_user_func(array($this, self::$supportedDrivers[$params['driver']]), $params);
+            } else {
+                throw new \InvalidArgumentException('Sql driver is required! Supported: ' . implode(', ', array_keys(self::$supportedDrivers)) . '.');
+            }
+            parent::__construct($dsn, $username, $password, $options);
         } else {
-            throw new \InvalidArgumentException('Sql driver is required! Supported: ' . implode(', ', array_keys(self::$supportedDrivers)) . '.');
+            parent::__construct($params, $username, $password, $options);
         }
-        parent::__construct($dsn, $params['username'], $params['password'], $options);
         unset($params);
         $this->setAttribute(\PDO::ATTR_ERRMODE, self::ERRMODE_EXCEPTION);
         $this->setAttribute(\PDO::ATTR_STATEMENT_CLASS, array(__NAMESPACE__ . '\\PdoStatement'));

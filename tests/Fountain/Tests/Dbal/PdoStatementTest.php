@@ -2,7 +2,7 @@
 
 namespace Fountain\Tests\Dbal;
 
-class PdoStatementTest extends TestSuite
+class PdoStatementTest extends \PHPUnit_Framework_TestCase
 {
     public function testExecute()
     {
