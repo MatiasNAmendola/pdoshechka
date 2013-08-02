@@ -8,7 +8,7 @@ class Pdo extends \PDO
     protected static $supportedDrivers = array(
         'mysql'    => 'getMysqlDsn',
         'sqlite'   => 'getSqliteDsn',
-        'postgres' => 'getPostgresSql'
+        'postgres' => 'getPostgresDsn'
     );
     protected static $paramTypes = array(
         'b' => self::PARAM_BOOL,
@@ -35,8 +35,8 @@ class Pdo extends \PDO
             parent::__construct($params, $username, $password, $options);
         }
         unset($params);
-        $this->setAttribute(\PDO::ATTR_ERRMODE, self::ERRMODE_EXCEPTION);
-        $this->setAttribute(\PDO::ATTR_STATEMENT_CLASS, array(__NAMESPACE__ . '\\PdoStatement'));
+        $this->setAttribute(self::ATTR_ERRMODE, self::ERRMODE_EXCEPTION);
+        $this->setAttribute(self::ATTR_STATEMENT_CLASS, array(__NAMESPACE__ . '\\PdoStatement'));
     }
 
     public function prepare($query, $driverOptions = array(), $parse = true)
@@ -116,8 +116,25 @@ class Pdo extends \PDO
         }
     }
 
-    protected function getPostgresSql(array $params)
+    protected function getPostgresDsn(array $params)
     {
+        $dsn = 'pgsql:';
+        if (array_key_exists('host', $params)) {
+            $dsn .= 'host=' . $params['host'] . ';';
+        }
+        if (array_key_exists('port', $params)) {
+            $dsn .= 'port=' . $params['port'] . ';';
+        }
+        if (array_key_exists('dbname', $params)) {
+            $dsn .= 'dbname=' . $params['dbname'] . ';';
+        }
+        if (array_key_exists('user', $params)) {
+            $dsn .= 'user=' . $params['user'] . ';';
+        }
+        if (array_key_exists('password', $params)) {
+            $dsn .= 'password=' . $params['password'] . ';';
+        }
 
+        return $dsn;
     }
 }
