@@ -42,10 +42,10 @@ class PdoStatement extends \PDOStatement
         return $this;
     }
 
-    public function fetchCallback(\Closure $callback, $mode = Pdo::FETCH_ASSOC)
+    public function fetchCallback(\Closure $callback, $mode = Pdo::FETCH_ASSOC, array &$results = array())
     {
         while (false !== $row = $this->fetch($mode)) {
-            $callback($row);
+            $results[] = $callback($row);
         }
 
         return $this;
