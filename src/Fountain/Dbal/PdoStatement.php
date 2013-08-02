@@ -17,6 +17,12 @@ class PdoStatement extends \PDOStatement
         $this->placeholders = $placeholders;
     }
 
+    /**
+     * @param array|mixed $parameters If args more then one, every argument becomes parameter
+     * @param mixed       $parameters ...
+     * @return $this
+     * @throws \InvalidArgumentException If you miss some params
+     */
     public function execute($parameters = array())
     {
         if (func_num_args() !== 1) {
@@ -42,8 +48,21 @@ class PdoStatement extends \PDOStatement
         return $this;
     }
 
+    /**
+     * @example
+     * $query->fetchCallback(function ($row) {
+     *     return new User::fromArray($row);
+     * }, null, $results);
+     * @param callable $callback
+     * @param int|null $mode    Fetch mode, null replaced by \PDO::FETCH_ASSOC
+     * @param array    $results Array where method save all callback results
+     * @return $this
+     */
     public function fetchCallback(\Closure $callback, $mode = Pdo::FETCH_ASSOC, array &$results = array())
     {
+        if ($mode === null) {
+            $mode = Pdo::FETCH_ASSOC;
+        }
         while (false !== $row = $this->fetch($mode)) {
             $results[] = $callback($row);
         }

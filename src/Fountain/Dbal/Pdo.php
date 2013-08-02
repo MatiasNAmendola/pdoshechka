@@ -22,6 +22,13 @@ class Pdo extends \PDO
     private $lastTypes;
     private $lastParamsCounter;
 
+    /**
+     * @param array|string $params If array, dsn compute by class, else just call parent construct
+     * @param string|null  $username
+     * @param string|null  $password
+     * @param array        $options
+     * @throws \InvalidArgumentException
+     */
     public function __construct($params = array(), $username = null, $password = null, $options = array())
     {
         if (is_array($params)) {
@@ -39,6 +46,12 @@ class Pdo extends \PDO
         $this->setAttribute(self::ATTR_STATEMENT_CLASS, array(__NAMESPACE__ . '\\PdoStatement'));
     }
 
+    /**
+     * @param string $query
+     * @param array  $driverOptions
+     * @param bool   $parse If false, method just call parent, and not parse any special syntax
+     * @return PdoStatement
+     */
     public function prepare($query, $driverOptions = array(), $parse = true)
     {
         if ($parse === true) {
