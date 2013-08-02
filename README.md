@@ -24,6 +24,6 @@ Add to your `composer.json`
 ```json
 {
     "require": {
-        "hell0w0rd/dbal": "dev-master"
+        "fountain/dbal": "dev-master"
     }
 }
