@@ -1,0 +1,20 @@
+{
+    "name": "hell0w0rd/dbal",
+    "description": "Database abstraction layer based on PDO",
+    "keywords": ["db", "sql", "pdo", "database"],
+    "authors": [
+        {
+            "name": "Gusakov Nikita",
+            "email": "nikita@hell0.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Dbal": "src"
+        }
+    }
+}
