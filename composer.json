@@ -2,6 +2,7 @@
     "name": "fountain/dbal",
     "description": "Database abstraction layer based on PDO",
     "keywords": ["db", "sql", "pdo", "database"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Gusakov Nikita",
@@ -18,6 +19,11 @@
     "autoload": {
         "psr-0": {
             "Fountain\\Dbal": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
         }
     }
 }
