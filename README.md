@@ -11,7 +11,7 @@ $db = new Pdo([
     'username' => 'root',
     'password' => 'secret',
     'dbname'   => 'test_db',
-    'driver'       => 'mysql'
+    'driver'   => 'mysql'
 ]);
 
 $result = $db->prepare('SELECT * FROM table WHERE id < i:id AND price <> f: OR name = s:name')
