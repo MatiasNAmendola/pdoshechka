@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbal;
+namespace Fountain\Dbal;
 
 class Pdo extends \PDO
 {

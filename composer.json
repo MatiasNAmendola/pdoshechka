@@ -1,5 +1,5 @@
 {
-    "name": "hell0w0rd/dbal",
+    "name": "fountain/dbal",
     "description": "Database abstraction layer based on PDO",
     "keywords": ["db", "sql", "pdo", "database"],
     "authors": [
@@ -11,6 +11,9 @@
     "require": {
         "php": ">=5.3",
         "ext-pdo": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
     },
     "autoload": {
         "psr-0": {
