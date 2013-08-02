@@ -40,7 +40,6 @@ class Pdo extends \PDO
 
     public function prepare($query, $driverOptions = array(), $parse = true)
     {
-        var_dump($query);
         if ($parse === true) {
             $this->lastPlaceholders = $this->lastTypes = array();
             $this->lastParamsCounter = 0;
@@ -55,6 +54,14 @@ class Pdo extends \PDO
         }
 
         return $stmt;
+    }
+
+    /**
+     * @see Pdo::prepare
+     */
+    public function __invoke($query, $driverOptions = array(), $parse = true)
+    {
+        return $this->prepare($query, $driverOptions, $parse);
     }
 
     protected function parseQuery($matches)

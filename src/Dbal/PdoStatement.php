@@ -41,4 +41,12 @@ class PdoStatement extends \PDOStatement
 
         return $this;
     }
+
+    /**
+     * @see PdoStatement::execute
+     */
+    public function __invoke()
+    {
+        return $this->execute(func_get_args());
+    }
 }
