@@ -1,6 +1,6 @@
 # Database Abstract Layer
 
-# Usage
+## Usage
 
 ```php
 <?php
@@ -17,8 +17,8 @@ $db = new Pdo([
 $result = $db->prepare('SELECT * FROM table WHERE id < i:id AND price <> f: OR name = s:name')
              ->execute(2.3, ['id' => $id], ['name' => $name])
              ->fetchAll();
-
-# Install
+```
+## Install
 
 Add to your `composer.json`
 ```json
