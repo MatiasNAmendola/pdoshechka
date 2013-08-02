@@ -19,6 +19,9 @@ class PdoStatement extends \PDOStatement
 
     public function execute($parameters = array())
     {
+        if (func_num_args() !== 1) {
+            $parameters = func_get_args();
+        }
         if ($this->types === null) {
             parent::execute($parameters);
         } else {
