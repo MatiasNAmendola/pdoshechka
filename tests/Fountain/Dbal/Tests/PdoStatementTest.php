@@ -1,6 +1,6 @@
 <?php
 
-namespace Fountain\Tests\Dbal;
+namespace Fountain\Dbal\Tests;
 
 class PdoStatementTest extends \PHPUnit_Framework_TestCase
 {

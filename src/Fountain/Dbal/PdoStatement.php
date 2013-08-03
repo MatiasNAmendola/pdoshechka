@@ -60,10 +60,10 @@ class PdoStatement extends PdoStatementWrapper
      * @param array    $results Array where method save all callback results
      * @return $this
      */
-    public function fetchCallback(\Closure $callback, $mode = Pdo::FETCH_ASSOC, array &$results = array())
+    public function fetchCallback(\Closure $callback, $mode = \PDO::FETCH_ASSOC, array &$results = array())
     {
         if ($mode === null) {
-            $mode = Pdo::FETCH_ASSOC;
+            $mode = \PDO::FETCH_ASSOC;
         }
         while (false !== $row = $this->fetch($mode)) {
             $results[] = $callback($row);

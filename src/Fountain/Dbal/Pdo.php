@@ -13,12 +13,12 @@ class Pdo extends PdoWrapper
         'postgres' => 'getPostgresDsn'
     );
     protected static $paramTypes = array(
-        'b' => self::PARAM_BOOL,
-        'n' => self::PARAM_NULL,
-        'i' => self::PARAM_INT,
-        's' => self::PARAM_STR,
-        'l' => self::PARAM_LOB,
-        'f' => self::PARAM_STR
+        'b' => \PDO::PARAM_BOOL,
+        'n' => \PDO::PARAM_NULL,
+        'i' => \PDO::PARAM_INT,
+        's' => \PDO::PARAM_STR,
+        'l' => \PDO::PARAM_LOB,
+        'f' => \PDO::PARAM_STR
     );
     private $lastPlaceholders;
     private $lastTypes;
@@ -34,18 +34,18 @@ class Pdo extends PdoWrapper
     public function __construct($params = array(), $username = null, $password = null, $options = array())
     {
         if (is_array($params)) {
-            if (isset($params['driver']) && isset(self::$supportedDrivers[$params['driver']])) {
-                $dsn = call_user_func(array($this, self::$supportedDrivers[$params['driver']]), $params);
+            if (isset($params['driver']) && isset(static::$supportedDrivers[$params['driver']])) {
+                $dsn = call_user_func(array($this, static::$supportedDrivers[$params['driver']]), $params);
             } else {
-                throw new \InvalidArgumentException('Sql driver is required! Supported: ' . implode(', ', array_keys(self::$supportedDrivers)) . '.');
+                throw new \InvalidArgumentException('Sql driver is required! Supported: ' . implode(', ', array_keys(static::$supportedDrivers)) . '.');
             }
             parent::__construct($dsn, $username, $password, $options);
         } else {
             parent::__construct($params, $username, $password, $options);
         }
         unset($params);
-        $this->setAttribute(self::ATTR_ERRMODE, self::ERRMODE_EXCEPTION);
-        $this->setAttribute(self::ATTR_STATEMENT_CLASS, array(__NAMESPACE__ . '\\PdoStatement'));
+        $this->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->setAttribute(\PDO::ATTR_STATEMENT_CLASS, array(__NAMESPACE__ . '\\PdoStatement'));
     }
 
     /**
@@ -59,7 +59,7 @@ class Pdo extends PdoWrapper
         if ($parse === true) {
             $this->lastPlaceholders = $this->lastTypes = array();
             $this->lastParamsCounter = 0;
-            $query = preg_replace_callback(self::PARAM_REGEX, array($this, 'parseQuery'), $query);
+            $query = preg_replace_callback(static::PARAM_REGEX, array($this, 'parseQuery'), $query);
         }
 
         $stmt = parent::prepare($query, $driverOptions);
@@ -90,7 +90,7 @@ class Pdo extends PdoWrapper
                 $name = & $matches[2];
                 break;
             default:
-                throw new \InvalidArgumentException("Syntax error!$matches[0]");
+                throw new \InvalidArgumentException("Syntax error! [$matches[0]]");
         }
         $this->lastTypes[$name] = self::$paramTypes[$matches[1]];
         $this->lastPlaceholders[] = $name;

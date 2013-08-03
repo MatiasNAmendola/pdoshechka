@@ -1,6 +1,6 @@
 <?php
 
-namespace Fountain\Tests\Dbal;
+namespace Fountain\Dbal\Tests;
 
 use Fountain\Dbal\Pdo;
 
