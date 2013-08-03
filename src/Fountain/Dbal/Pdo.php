@@ -2,7 +2,9 @@
 
 namespace Fountain\Dbal;
 
-class Pdo extends \PDO
+use Fountain\Dbal\Wrapper\PdoWrapper;
+
+class Pdo extends PdoWrapper
 {
     const PARAM_REGEX = '/([bnislf])\:(\w+)*/';
     protected static $supportedDrivers = array(

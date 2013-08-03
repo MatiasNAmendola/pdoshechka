@@ -2,7 +2,9 @@
 
 namespace Fountain\Dbal;
 
-class PdoStatement extends \PDOStatement
+use Fountain\Dbal\Wrapper\PdoStatementWrapper;
+
+class PdoStatement extends PdoStatementWrapper
 {
     protected $types;
     protected $placeholders;
