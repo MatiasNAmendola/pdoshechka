@@ -6,11 +6,16 @@ class PdoStatementTest extends \PHPUnit_Framework_TestCase
 {
     public function testExecute()
     {
-        $this->assertTrue(true);
+        $this->markTestSkipped('The test is not yet written');
     }
 
-    public function testInvoke()
+    public function testExecuteThrowExceptionIfMissParams()
     {
-        $this->assertTrue(true);
+        $this->markTestSkipped('The test is not yet written');
+    }
+
+    public function testExecuteWithManyParams()
+    {
+        $this->markTestSkipped('The test is not yet written');
     }
 }

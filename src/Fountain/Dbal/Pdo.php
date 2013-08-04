@@ -28,10 +28,10 @@ class Pdo extends PdoWrapper
      * @param array|string $params If array, dsn compute by class, else just call parent construct
      * @param string|null  $username
      * @param string|null  $password
-     * @param array        $options
+     * @param array        $attributes
      * @throws \InvalidArgumentException
      */
-    public function __construct($params = array(), $username = null, $password = null, $options = array())
+    public function __construct($params = array(), $username = null, $password = null, $attributes = array())
     {
         if (is_array($params)) {
             if (isset($params['driver']) && isset(static::$supportedDrivers[$params['driver']])) {
@@ -39,9 +39,9 @@ class Pdo extends PdoWrapper
             } else {
                 throw new \InvalidArgumentException('Sql driver is required! Supported: ' . implode(', ', array_keys(static::$supportedDrivers)) . '.');
             }
-            parent::__construct($dsn, $username, $password, $options);
+            parent::__construct($dsn, $username, $password, $attributes);
         } else {
-            parent::__construct($params, $username, $password, $options);
+            parent::__construct($params, $username, $password, $attributes);
         }
         unset($params);
         $this->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
