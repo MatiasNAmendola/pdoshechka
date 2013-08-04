@@ -7,28 +7,26 @@ class PdoWrapper
     protected $dsn;
     protected $username;
     protected $password;
-    protected $options = array(
+    protected $attributes = array(
         \PDO::ATTR_STATEMENT_CLASS => 'Fountain\\Dbal\\Wrapper\\PdoStatementWrapper'
     );
 
-    public function __construct($dsn, $username = null, $password = null, array $options = array())
+    public function __construct($dsn, $username = null, $password = null, array $attributes = array())
     {
         $this->dsn = $dsn;
         $this->username = $username;
         $this->password = $password;
-        $this->options = $options;
+        $this->attributes = $attributes;
     }
 
     public function setAttribute($name, $value)
     {
-        $this->options[$name] = $value;
+        $this->attributes[$name] = $value;
     }
 
-    public function prepare($query, array $driverOptions = array())
+    public function prepare($query, $driverOptions = array())
     {
-        $stmt = new $this->options[\PDO::ATTR_STATEMENT_CLASS];
-        $stmt->queryString = $query;
-        $stmt->setDriverOptions($driverOptions);
+        $stmt = new $this->attributes[\PDO::ATTR_STATEMENT_CLASS]($query, $driverOptions);
 
         return $stmt;
     }
@@ -40,8 +38,8 @@ class PdoWrapper
 
     public function getAttribute($name)
     {
-        if (array_key_exists($name, $this->options)) {
-            return $this->options[$name];
+        if (array_key_exists($name, $this->attributes)) {
+            return $this->attributes[$name];
         }
     }
 
@@ -54,5 +52,4 @@ class PdoWrapper
     {
         return $this->username;
     }
-
 }
