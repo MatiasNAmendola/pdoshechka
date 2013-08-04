@@ -1,11 +1,14 @@
-# Database Abstract Layer
+# Fountain DBAL
+[![Build Status](https://travis-ci.org/hell0w0rd/dbal.png?branch=master)](https://travis-ci.org/hell0w0rd/dbal)
+
+Simle, tested wrapper for PDO.
 
 ## Usage
 
 ```php
 <?php
 
-use Dbal\Pdo;
+use Fountain\Dbal\Pdo;
 
 $db = new Pdo([
     'username' => 'root',
