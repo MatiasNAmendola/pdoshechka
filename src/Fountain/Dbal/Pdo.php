@@ -100,20 +100,20 @@ class Pdo extends PdoWrapper
     protected function getMysqlDsn(array $params)
     {
         $dsn = 'mysql:';
-        if (array_key_exists('socket', $params)) {
+        if (isset($params['socket'])) {
             $dsn .= 'unix_socket=' . $params['socket'] . ';';
         } else {
-            if (array_key_exists('host', $params)) {
+            if (isset($params['host'])) {
                 $dsn .= 'host=' . $params['host'] . ';';
             }
-            if (array_key_exists('port', $params)) {
+            if (isset($params['port'])) {
                 $dsn .= 'port=' . $params['port'] . ';';
             }
         }
-        if (array_key_exists('dbname', $params)) {
+        if (isset($params['dbname'])) {
             $dsn .= 'dbname=' . $params['dbname'] . ';';
         }
-        if (array_key_exists('charset', $params)) {
+        if (isset($params['charset'])) {
             $dsn .= 'charset=' . $params['charset'] . ';';
         }
 
@@ -133,19 +133,19 @@ class Pdo extends PdoWrapper
     protected function getPostgresDsn(array $params)
     {
         $dsn = 'pgsql:';
-        if (array_key_exists('host', $params)) {
+        if (isset($params['host'])) {
             $dsn .= 'host=' . $params['host'] . ';';
         }
-        if (array_key_exists('port', $params)) {
+        if (isset($params['port'])) {
             $dsn .= 'port=' . $params['port'] . ';';
         }
-        if (array_key_exists('dbname', $params)) {
+        if (isset($params['dbname'])) {
             $dsn .= 'dbname=' . $params['dbname'] . ';';
         }
-        if (array_key_exists('user', $params)) {
+        if (isset($params['user'])) {
             $dsn .= 'user=' . $params['user'] . ';';
         }
-        if (array_key_exists('password', $params)) {
+        if (isset($params['user'])) {
             $dsn .= 'password=' . $params['password'] . ';';
         }
 
