@@ -9,13 +9,9 @@ class PdoStatement extends PdoStatementWrapper
     protected $types;
     protected $placeholders;
 
-    public function setTypes(array $types)
+    public function setFountainData(array $types, array $placeholders)
     {
         $this->types = $types;
-    }
-
-    public function setPlaceholders(array $placeholders)
-    {
         $this->placeholders = $placeholders;
     }
 
