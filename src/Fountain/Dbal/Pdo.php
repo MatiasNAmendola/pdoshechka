@@ -31,7 +31,7 @@ class Pdo extends PdoWrapper
      * @param array        $attributes
      * @throws \InvalidArgumentException
      */
-    public function __construct($params = array(), $username = null, $password = null, $attributes = array())
+    public function __construct($params, $username = null, $password = null, $attributes = array())
     {
         if (is_array($params)) {
             if (isset($params['driver']) && isset(static::$supportedDrivers[$params['driver']])) {
@@ -65,8 +65,7 @@ class Pdo extends PdoWrapper
         $stmt = parent::prepare($query, $driverOptions);
 
         if ($parse === true) {
-            $stmt->setPlaceholders($this->lastPlaceholders);
-            $stmt->setTypes($this->lastTypes);
+            $stmt->setFountainData($this->lastTypes, $this->lastPlaceholders);
         }
 
         return $stmt;
