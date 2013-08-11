@@ -24,7 +24,10 @@ class PdoStatement extends PdoStatementWrapper
     public function execute($parameters = array())
     {
         if (func_num_args() !== 1) {
-            $parameters = func_get_args();
+            $parameters = array();
+            foreach (func_get_args() as $param) {
+                $parameters = array_merge($parameters, $param);
+            }
         }
         if ($this->types === null) {
             parent::execute($parameters);
@@ -32,7 +35,7 @@ class PdoStatement extends PdoStatementWrapper
             $parameters = array_intersect_key($parameters, $this->types);
             foreach ($this->placeholders as $i => $name) {
                 if (!array_key_exists($name, $parameters)) {
-                    throw new \InvalidArgumentException("Missing parameter '{$name}.'");
+                    throw new \InvalidArgumentException("Missing parameter '{$name}'.");
                 }
                 $value = & $parameters[$name];
                 if ($value === null) {
@@ -41,6 +44,7 @@ class PdoStatement extends PdoStatementWrapper
                     $this->bindValue($i + 1, $value, $this->types[$name]);
                 }
             }
+            parent::execute();
         }
 
         return $this;

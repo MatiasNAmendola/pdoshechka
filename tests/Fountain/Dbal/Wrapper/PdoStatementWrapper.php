@@ -25,9 +25,11 @@ class PdoStatementWrapper
         );
     }
 
-    public function getExecuted()
+    public function getLastExecuted()
     {
-        return $this->_executed;
+        $last = end($this->_executed);
+
+        return $last;
     }
 
     public function bindValue($param, $value, $type = \PDO::PARAM_STR)
@@ -41,5 +43,13 @@ class PdoStatementWrapper
     public function setFetchData(array $data)
     {
         $this->_fetchData = $data;
+    }
+
+    public function fetch()
+    {
+        $data = current($this->_fetchData);
+        next($this->_fetchData);
+
+        return $data;
     }
 }
