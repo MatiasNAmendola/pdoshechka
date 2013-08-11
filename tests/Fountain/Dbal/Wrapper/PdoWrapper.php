@@ -7,9 +7,7 @@ class PdoWrapper
     protected $dsn;
     protected $username;
     protected $password;
-    protected $attributes = array(
-        \PDO::ATTR_STATEMENT_CLASS => 'Fountain\\Dbal\\Wrapper\\PdoStatementWrapper'
-    );
+    protected $attributes;
 
     public function __construct($dsn, $username = null, $password = null, array $attributes = array())
     {
@@ -26,7 +24,7 @@ class PdoWrapper
 
     public function prepare($query, $driverOptions = array())
     {
-        $stmt = new $this->attributes[\PDO::ATTR_STATEMENT_CLASS]($query, $driverOptions);
+        $stmt = new $this->attributes[\PDO::ATTR_STATEMENT_CLASS][0]($query, $driverOptions);
 
         return $stmt;
     }

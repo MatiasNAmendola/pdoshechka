@@ -11,18 +11,23 @@ class PdoStatementWrapper
     private $_values;
     private $_fetchData = array();
 
-    public function __construct($query, array $options)
+    public function __construct($query, $options)
     {
         $this->_query = $this->queryString = $query;
         $this->_driverOptions = $options;
     }
 
-    public function execute(array $params = array())
+    public function execute($params = array())
     {
         $this->_executed[] = array(
             'params' => $params,
-            'query'  => $this->_query
+            'values' => $this->_values
         );
+    }
+
+    public function getExecuted()
+    {
+        return $this->_executed;
     }
 
     public function bindValue($param, $value, $type = \PDO::PARAM_STR)
