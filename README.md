@@ -27,6 +27,7 @@ Add to your `composer.json`
 ```json
 {
     "require": {
-        "fountain/dbal": "dev-master"
+        "fountain/dbal": "1.0"
     }
 }
+```
