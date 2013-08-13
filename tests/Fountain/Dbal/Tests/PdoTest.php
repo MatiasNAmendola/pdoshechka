@@ -15,16 +15,6 @@ class PdoTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('sqlite::memory:', $pdo->getDsn());
     }
 
-    public function testMysqlConstruct()
-    {
-        $this->markTestSkipped('The test is not yet written');
-    }
-
-    public function testPostgresConstruct()
-    {
-        $this->markTestSkipped('The test is not yet written');
-    }
-
     public function testConstructFromReadyDsnString()
     {
         $pdo = new Pdo('sqlite::memory:');
