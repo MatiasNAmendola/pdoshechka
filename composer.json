@@ -1,6 +1,6 @@
 {
-    "name": "fountain/dbal",
-    "description": "Database abstraction layer based on PDO",
+    "name": "fountain/pdoshechka",
+    "description": "Simple, friendly PDO wrapper",
     "keywords": ["db", "sql", "pdo", "database"],
     "license": "MIT",
     "authors": [
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Fountain\\Dbal": "src"
+            "Fountain\\Pdoshechka\\": "src"
         }
     },
     "extra": {

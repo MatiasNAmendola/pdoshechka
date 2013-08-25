@@ -1,8 +1,8 @@
 <?php
 
-namespace Fountain\Dbal\Tests;
+namespace Fountain\Pdoshechka\Tests;
 
-use Fountain\Dbal\Pdo;
+use Fountain\Pdoshechka\Pdo;
 
 class PdoTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,7 +27,7 @@ class PdoTest extends \PHPUnit_Framework_TestCase
         $pdo = new Pdo('');
         $stmt = $pdo->prepare('SELECT * FROM test');
 
-        $this->assertInstanceOf('Fountain\\Dbal\\PdoStatement', $stmt);
+        $this->assertInstanceOf('Fountain\\Pdoshechka\\PdoStatement', $stmt);
         $this->assertSame('SELECT * FROM test', $stmt->queryString);
     }
 
@@ -35,6 +35,6 @@ class PdoTest extends \PHPUnit_Framework_TestCase
     {
         $pdo = new Pdo('');
 
-        $this->assertInstanceOf('Fountain\\Dbal\\PdoStatement', $pdo(''));
+        $this->assertInstanceOf('Fountain\\Pdoshechka\\PdoStatement', $pdo(''));
     }
 }

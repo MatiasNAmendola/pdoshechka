@@ -1,8 +1,8 @@
 <?php
 
-namespace Fountain\Dbal\Tests;
+namespace Fountain\Pdoshechka\Tests;
 
-use Fountain\Dbal\Pdo;
+use Fountain\Pdoshechka\Pdo;
 use PDO as Param;
 
 class PdoStatementTest extends \PHPUnit_Framework_TestCase

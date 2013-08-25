@@ -1,8 +1,8 @@
 <?php
 
-namespace Fountain\Dbal;
+namespace Fountain\Pdoshechka;
 
-use Fountain\Dbal\Wrapper\PdoStatementWrapper;
+use Fountain\Pdoshechka\Wrapper\PdoStatementWrapper;
 
 class PdoStatement extends PdoStatementWrapper
 {

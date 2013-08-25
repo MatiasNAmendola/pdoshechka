@@ -1,14 +1,14 @@
-# Fountain DBAL
-[![Build Status](https://travis-ci.org/hell0w0rd/dbal.png?branch=master)](https://travis-ci.org/hell0w0rd/dbal)
+# Pdoshechka
+[![Build Status](https://travis-ci.org/FountainDb/Pdoshechka.png?branch=master)](https://travis-ci.org/FountainDb/Pdoshechka)
 
-Simle, tested wrapper for PDO.
+Simple, friendly PDO wrapper.
 
 ## Usage
 
 ```php
 <?php
 
-use Fountain\Dbal\Pdo;
+use Fountain\Pdoshechka\Pdo;
 
 $db = new Pdo([
     'username' => 'root',

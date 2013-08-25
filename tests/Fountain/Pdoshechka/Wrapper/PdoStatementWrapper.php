@@ -1,6 +1,6 @@
 <?php
 
-namespace Fountain\Dbal\Wrapper;
+namespace Fountain\Pdoshechka\Wrapper;
 
 class PdoStatementWrapper
 {

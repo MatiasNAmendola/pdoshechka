@@ -12,7 +12,7 @@
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="Dbal test suite">
+        <testsuite name="Fountain pdoshechka test suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
