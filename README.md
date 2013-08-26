@@ -27,7 +27,7 @@ Add to your `composer.json`
 ```json
 {
     "require": {
-        "fountain/dbal": "1.0"
+        "fountain/pdoshechka": "~1.0"
     }
 }
 ```
