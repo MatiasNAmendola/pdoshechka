@@ -1,5 +1,5 @@
 # Pdoshechka
-[![Build Status](https://travis-ci.org/FountainDb/Pdoshechka.png?branch=master)](https://travis-ci.org/FountainDb/Pdoshechka)
+[![Build Status](https://travis-ci.org/FountainDb/pdoshechka.png?branch=master)](https://travis-ci.org/FountainDb/Pdoshechka)
 
 Simple, friendly PDO wrapper.
 
